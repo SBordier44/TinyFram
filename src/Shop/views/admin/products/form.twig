@@ -1,0 +1,24 @@
+{{ csrf_input() }}
+<div class="row">
+    <div class="col-md-4">
+        {{ field('name', item.name, "Nom du produit") }}
+    </div>
+    <div class="col-md-4">
+        {{ field('slug', item.slug, "Lien") }}
+    </div>
+    <div class="col-md-4">
+        {{ field('price', item.price, "Prix", {type: 'number'}, {step: '0.01'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        {% if item.image %}
+            <img src="{{ item.thumb }}" alt="" style="width:100%;">
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {{ field('image', null, "Image", {type: 'file'}) }}
+    </div>
+</div>
+{{ field('description', item.description, "Description", {type: 'textarea'}) }}
+{{ field('created_at', item.createdAt, "Date de création", {class: 'datepicker'}) }}

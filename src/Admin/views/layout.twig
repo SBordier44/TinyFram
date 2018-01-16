@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title "Mon site" %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ path('admin') }}">Administration</a>
+        <ul class="navbar-nav mr-auto">
+            {{ admin_menu() }}
+        </ul>
+        <div class="navbar-nav">
+            <div class="navbar-text">Connecté en tant que <strong>{{ current_user().username }}</strong></div>
+            &nbsp;&nbsp;
+            <div class="nav-item {{ is_subpath('account') ? 'active' }}">
+                <a href="{{ path('account') }}" class="nav-link">Mon Compte</a>
+            </div>
+            &nbsp;&nbsp;
+            <form method="post" action="{{ path('auth.logout') }}">
+                {{ csrf_input() }}
+                <button class="btn btn-danger">Se déconnecter</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        {% if flash('success') %}
+            <div class="alert alert-success">
+                {{ flash('success') }}
+            </div>
+        {% endif %}
+        {% if flash('error') %}
+            <div class="alert alert-danger">
+                {{ flash('error') }}
+            </div>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.min.js"></script>
+    <script>
+      flatpickr('.datepicker', {
+        enableTime: true,
+        altInput: true,
+        altFormat: 'j F Y, H:i',
+        dateFormat: 'Y-m-d H:i:S'
+      })
+    </script>
+</body>
+</html>

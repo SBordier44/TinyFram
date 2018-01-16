@@ -1,0 +1,37 @@
+{% extends 'layout.twig' %}
+{% block title %}
+    Boutique{% if page > 1 %}, page {{ page }}{% endif %}
+{% endblock %}
+{% block body %}
+    <h1>Boutique{% if page > 1 %}, page {{ page }}{% endif %}</h1>
+    <div class="row">
+        {% for row in products | batch(4) %}
+            <div class="card-deck">
+                {% for product in row %}
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{ product.thumb }}" alt="{{ product.name }}" style="width:100%;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('shop.show', {slug: product.slug}) }}">
+                                    {{ product.name }}
+                                </a>
+                            </h4>
+                            <p class="card-text">
+                                {{ product.description | excerpt | nl2br }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('shop.show', {slug: product.slug}) }}"
+                               class="btn btn-primary">
+                                Voir le produit
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    {{ paginate(products, 'shop') }}
+{% endblock %}

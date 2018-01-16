@@ -1,0 +1,1 @@
+Salut <?php echo $nom ?>

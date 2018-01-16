@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title "Mon site" %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ path('home') }}">Mon super site</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {{ is_subpath('shop') ? 'active' }}">
+                <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
+            </li>
+            <li class="nav-item {{ is_subpath('blog.index') ? 'active' }}">
+                <a class="nav-link" href="{{ path('blog.index') }}">Blog</a>
+            </li>
+            <li class="nav-item {{ is_subpath('contact') ? 'active' }}">
+                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+            </li>
+        </ul>
+        <div class="navbar-nav">
+            {% if module_enabled('basket') %}
+                <div class="nav-item">
+                    <a href="{{ path('basket') }}" class="nav-link"><span class="oi oi-basket"></span> Mon Panier
+                        ({{ basket_count() }})</a>
+                </div>
+            {% endif %}
+            {% if current_user() %}
+                {% if current_user().role == 'admin' %}
+                    <div class="nav-item {{ is_subpath('admin') ? 'active' }}">
+                        <a href="{{ path('admin') }}" class="nav-link">Administration</a>
+                    </div>
+                {% endif %}
+                <div class="nav-item {{ is_subpath('account') ? 'active' }}">
+                    <a href="{{ path('account') }}" class="nav-link">Mon Compte</a>
+                </div>
+                {% if module_enabled('basket') %}
+                    <div class="nav-item {{ is_subpath('basket.orders') ? 'active' }}">
+                        <a href="{{ path('basket.orders') }}" class="nav-link">Mes commandes</a>
+                    </div>
+                {% endif %}
+                <div class="nav-item">
+                    <form method="post" action="{{ path('auth.logout') }}">
+                        {{ csrf_input() }}
+                        <button class="btn btn-danger">Se déconnecter</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="nav-item {{ is_subpath('auth.login') ? 'active' }}">
+                    <a class="nav-link" href="{{ path('auth.login') }}">Se connecter</a>
+                </div>
+                <div class="nav-item {{ is_subpath('account.signup') ? 'active' }}">
+                    <a class="nav-link" href="{{ path('account.signup') }}">S'inscrire</a>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        {% if flash('success') %}
+            <div class="alert alert-success">
+                {{ flash('success') }}
+            </div>
+        {% endif %}
+        {% if flash('error') %}
+            <div class="alert alert-danger">
+                {{ flash('error') }}
+            </div>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.locales.min.js"></script>
+    <script>
+      timeago().render(document.querySelectorAll('.timeago'), 'fr')
+    </script>
+</body>
+</html>

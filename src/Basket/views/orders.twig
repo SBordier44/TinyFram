@@ -1,0 +1,44 @@
+{% extends 'layout.twig' %}
+{% block title %}Mes commandes{% endblock %}
+{% block body %}
+    <h1>Mes commandes</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Produits</th>
+                <th>Montant TTC</th>
+                <th>Date / Heure</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if orders is not empty %}
+                {% for order in orders %}
+                    <tr>
+                        <td>
+                            <ul>
+                                {% for row in order.rows %}
+                                    <li>{{ row.quantity }} x {{ row.product.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ order.price | price_format }}</td>
+                        <td>{{ order.createdAt.format('d/m/Y H:i') }}</td>
+                        <td>
+                            <a href="{{ path('basket.order.invoice', {id: order.id}) }}" class="btn btn-primary"
+                               target="_blank">
+                                <span class="oi oi-data-transfer-download" title="Télécharger la Facture"> </span>
+                                Facture
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">Aucune commande disponible</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    {{ paginate(orders, 'basket.orders') }}
+{% endblock %}

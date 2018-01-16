@@ -1,0 +1,27 @@
+{{ csrf_input() }}
+<div class="row">
+    <div class="col-md-4">
+        {{ field('name', item.name, "Titre de l'article") }}
+    </div>
+    <div class="col-md-4">
+        {{ field('category_id', item.categoryId, "Catégorie", {options: categories}) }}
+    </div>
+    <div class="col-md-4">
+        {{ field('published', item.published, "En ligne ?", {type: 'checkbox'}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        {% if item.image %}
+            <img src="{{ item.thumb }}" alt="" style="width:100%;">
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {{ field('image', item.slug, "Image", {type: 'file'}) }}
+    </div>
+    <div class="col-md-4">
+        {{ field('slug', item.slug, "Lien") }}
+    </div>
+</div>
+{{ field('content', item.content, "content", {type: 'textarea'}) }}
+{{ field('created_at', item.createdAt, "Date de création", {class: 'datepicker'}) }}

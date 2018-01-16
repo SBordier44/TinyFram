@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title post.name %}
+
+{% block body %}
+
+    <h1>{{ post.name }}</h1>
+
+    <p class="text-muted">
+        {% if post.categoryId %}
+            <a href="{{ path('blog.category', {slug: post.categorySlug}) }}"
+               title="{{ post.categoryName }}">{{ post.categoryName }}</a>
+        {% endif %}
+        {{ post.createdAt | ago }}
+    </p>
+
+    <p>
+        {% if post.image %}
+            <img src="{{ post.imageUrl }}" alt="{{ post.name }}" style="width:100%;">
+        {% endif %}
+    </p>
+
+    <p>
+        {{ post.content | nl2br }}
+    </p>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% block title product.name %}
+{% block body %}
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" style="width: 100%;">
+            </div>
+            <div class="col-sm-8">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1>{{ product.name }}</h1>
+                        <p class="text-muted">{{ product.price | price_format }}</p>
+                    </div>
+                    <div class="card-text">
+                        {{ product.description | nl2br }}
+                    </div>
+                    <form action="{{ path('basket.add', {id: product.id}) }}" method="post">
+                        {{ csrf_input() }}
+                        <button class="btn btn-primary"><span class="oi oi-basket"></span> Ajouter au panier
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="col-sm-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{ count }}</h4>
+            <p class="card-text">Article{% if count > 1 %}s{% endif %}</p>
+            <a href="{{ path('blog.admin.index') }}" class="btn btn-primary">Gérer les articles</a>
+        </div>
+    </div>
+</div>

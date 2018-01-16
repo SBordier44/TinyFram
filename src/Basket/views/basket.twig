@@ -1,0 +1,46 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-left">Nom du produit</th>
+        <th class="text-right">Quantité</th>
+        <th class="text-right">Prix Unitaire HT</th>
+        <th class="text-right">Montant HT</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if basket.rows is not empty %}
+        {% for row in basket.rows %}
+            <tr>
+                <td>{{ row.product.name }}</td>
+                <td class="text-right" width="200">
+                    {% if noform %}
+                        {{ row.quantity }}
+                    {% else %}
+                        <form action="{{ path('basket.change', {id: row.product.id}) }}" method="post"
+                              class="form-inline">
+                            {{ csrf_input() }}
+                            <input type="number" class="form-control" name="quantity" value="{{ row.quantity }}"
+                                   style="width: 5rem;">
+                            <button class="btn btn-primary">Changer</button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td class="text-right">{{ row.product.price | price_format }}</td>
+                <td class="text-right">{{ (row.product.price * row.quantity) | price_format }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="4" class="text-center">Panier vide...</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <td colspan="3" class="text-right">Total HT</td>
+        <td class="text-right">{{ basket.price | price_format }}</td>
+    </tr>
+    {% if vat %}
+        <td class="text-right" colspan="3">Total TTC (TVA {{ vat | price_format('%') }})</td>
+        <td class="text-right">{{ (basket.price * (vat + 100) / 100) | price_format }}</td>
+    {% endif %}
+    </tbody>
+</table>

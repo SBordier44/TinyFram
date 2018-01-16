@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% block title %}Mon panier{% endblock %}
+{% block body %}
+    <h1>Mon panier</h1>
+    {% include '@basket/basket.twig' %}
+    {% if basket.rows is not empty %}
+        {% if current_user() %}
+            <form action="{{ path('basket.order.summary') }}" method="post">
+                {{ csrf_input() }}
+                <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="{{ stripeKey }}"
+                        data-amount="{{ basket.price * 100 }}"
+                        data-name="Panier"
+                        data-email="{{ current_user().email }}"
+                        data-description="Achat sur monsite.com"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="fr"
+                        data-zip-code="true"
+                        data-currency="eur">
+                </script>
+            </form>
+        {% else %}
+            <a href="{{ path('auth.login') }}" class="btn btn-primary">Valider ma commande</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

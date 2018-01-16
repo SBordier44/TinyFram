@@ -1,0 +1,74 @@
+{
+    "name": "nuboxdevcom/tinyfram",
+    "license": "MIT",
+    "type": "project",
+    "description": "A small MVC Framework for tiny projects",
+    "authors": [
+        {
+            "name": "NuBOX DevCom",
+            "email": "slye@nubox.fr"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/NuBOXDevCom/TinyFram/issues",
+        "source": "https://github.com/NuBOXDevCom/TinyFram"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework",
+            "App\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/psr7": "^1.4",
+        "http-interop/response-sender": "^1.0",
+        "zendframework/zend-expressive-fastroute": "^2.1",
+        "twig/twig": "^2.4",
+        "php-di/php-di": "^5.4",
+        "pagerfanta/pagerfanta": "^1.0",
+        "middlewares/whoops": "^0.6",
+        "doctrine/cache": "^1.7",
+        "intervention/image": "^2.4",
+        "swiftmailer/swiftmailer": "^6.0",
+        "ramsey/uuid": "^3.7",
+        "stripe/stripe-php": "^5.8",
+        "staaky/vatrates": "^2.0",
+        "http-interop/http-server-middleware": "^1.0",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "robmorgan/phinx": "^0.9",
+        "fzaninotto/faker": "^1.7",
+        "composer/composer": "^1.6",
+        "squizlabs/php_codesniffer": "^3.2"
+    },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t public/ -ddisplay_errors=1",
+        "post-create-project-cmd": [
+            "Framework\\Installer\\PostCreateProject::buildConfig"
+        ]
+    },
+    "suggest": {
+        "nuboxdevcom/database-backup": "^1.0",
+        "sensiolabs/security-checker": "^4.1"
+    },
+    "repositories": {
+        "packagist": { "url": "https://packagist.org", "type": "composer" }
+    }
+}

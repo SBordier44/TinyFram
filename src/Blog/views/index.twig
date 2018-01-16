@@ -1,0 +1,73 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    {% if category %}
+        Catégorie : {{ category.name }}{% if page > 1 %}, page {{ page }}{% endif %}
+    {% else %}
+        Blog{% if page > 1 %}, page {{ page }}{% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    {% if category %}
+        <h1>Catégorie : {{ category.name }}{% if page > 1 %}, page {{ page }}{% endif %}</h1>
+    {% else %}
+        <h1>Bienvenue sur le blog{% if page > 1 %}, page {{ page }}{% endif %}</h1>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="row">
+
+                {% for row in posts | batch(4) %}
+                    <div class="card-deck">
+                        {% for post in row %}
+                            <div class="card">
+                                {% if post.categoryName %}
+                                    <div class="card-header">{{ post.categoryName }}</div>
+                                {% endif %}
+                                {% if post.image %}
+                                    <img src="{{ post.thumb }}" alt="{{ post.name }}" style="width:100%;">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="{{ path('blog.show', {slug: post.slug, id: post.id}) }}">
+                                            {{ post.name }}
+                                        </a>
+                                    </h4>
+                                    <p class="card-text">
+                                        {{ post.content | excerpt | nl2br }}
+                                    </p>
+                                    <p class="text-muted">{{ post.createdAt | ago }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{{ path('blog.show', {slug: post.slug, id: post.id}) }}"
+                                       class="btn btn-primary">
+                                        Voir l'article
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if category %}
+                {{ paginate(posts, 'blog.category', {slug: category.slug}) }}
+            {% else %}
+                {{ paginate(posts, 'blog.index') }}
+            {% endif %}
+        </div>
+        <div class="col-md-3">
+            <ul class="list-group">
+                {% for c in categories %}
+                    <li class="list-group-item {% if c.id == category.id %}active{% endif %}">
+                        <a style="color:inherit;" href="{{ path('blog.category', {slug: c.slug}) }}">{{ c.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

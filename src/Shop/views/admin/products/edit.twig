@@ -1,0 +1,9 @@
+{% extends '@admin/layout.twig' %}
+{% block title "Edition du produit" %}
+{% block body %}
+    <h1>Edition du produit {{ item.name }}</h1>
+    <form action="{{ path(routePrefix ~ '.edit', {id: item.id}) }}" method="post" enctype="multipart/form-data">
+        {% include viewPath ~ '/form.twig' %}
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+    </form>
+{% endblock %}

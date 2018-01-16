@@ -1,0 +1,16 @@
+<phpunit bootstrap="./vendor/autoload.php" colors="true">
+    <testsuites>
+        <testsuite name="TinyFram Test Suite">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>src/</directory>
+            <directory>Framework/</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="dev"/>
+    </php>
+</phpunit>

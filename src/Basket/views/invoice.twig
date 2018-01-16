@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Facture</title>
+    <style>
+        a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block
+        }
+
+        body {
+            line-height: 1
+        }
+
+        ol, ul {
+            list-style: none
+        }
+
+        blockquote, q {
+            quotes: none
+        }
+
+        blockquote:after, blockquote:before, q:after, q:before {
+            content: "";
+            content: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        body {
+            color: #222;
+            font-family: Helvetica Neue, Arial, Verdana, Nimbus Sans L, sans-serif;
+            font-weight: 400;
+            height: 100%;
+            line-height: normal;
+            text-rendering: optimizeLegibility
+        }
+
+        h1 {
+            font-size: 3em;
+            line-height: 1.1em;
+            margin: 0 0 70px;
+            min-height: 80px;
+            padding: 0;
+            width: 300px
+        }
+
+        h1, strong {
+            font-weight: 700
+        }
+
+        .cb {
+            clear: both;
+            height: 20px
+        }
+
+        .tleft {
+            text-align: left !important
+        }
+
+        .tright {
+            text-align: right !important;
+        }
+
+        .footer {
+            position: absolute;
+            border-top: 1px solid #ccc;
+            padding: 1em 5px 0;
+            margin: 0
+        }
+
+        .address {
+            overflow: hidden
+        }
+
+        .address_label {
+            color: #555;
+            float: left;
+            font-size: 1em;
+            font-weight: 400;
+            margin: 0;
+            padding-top: 4px;
+            text-align: right;
+            width: 105px
+        }
+
+        .address_content {
+            border-left: 1px solid #ccc;
+            margin-left: 115px;
+            padding: 4px 0 4px 10px
+        }
+
+        .address_content strong {
+            display: block;
+            font-size: 1.2em;
+            padding-bottom: 2px
+        }
+
+        .from {
+            position: absolute;
+            top: 7px;
+            right: 0;
+            width: 50%
+        }
+
+        .to {
+            float: left;
+            width: 50%
+        }
+
+        .infos {
+            float: right;
+            width: 50%
+        }
+
+        .infos table {
+            width: 100%
+        }
+
+        .infos .label {
+            text-align: right;
+            width: 105px;
+            color: #555;
+            font-size: inherit;
+            padding: 4px 10px 4px 0;
+            white-space: nowrap
+        }
+
+        .infos .def, .infos .label {
+            min-height: 17px;
+            vertical-align: top
+        }
+
+        .infos .def {
+            border-left: 1px solid #ccc;
+            padding: 4px 10px
+        }
+
+        .items {
+            border-collapse: collapse;
+            margin: 50px 0;
+            width: 100%
+        }
+
+        .items tbody tr:nth-child(odd) {
+            background-color: #f6f6f6
+        }
+
+        .items th {
+            text-align: right;
+            line-height: 1.1em;
+            font-size: .9em;
+            padding: 10px 3px 10px 2px;
+            font-weight: 700;
+            color: #000
+        }
+
+        .items td, .items th {
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .items td {
+            float: none;
+            font-weight: 400;
+            padding: 10px
+        }
+
+        .items .total {
+            background: transparent !important
+        }
+
+        .items .total td {
+            border: none
+        }
+
+        .items .total td.label {
+            text-align: right
+        }
+
+        .items .total-first td {
+            padding-top: 28px
+        }
+
+        .items .total-big td {
+            padding-top: 1.1em;
+            font-size: 1.3em;
+            font-weight: 700
+        }
+    </style>
+</head>
+<body>
+<h1>Facture</h1>
+<div class="address from">
+    <div class="address_label">De</div>
+    <div class="address_content">
+        <strong>Mon Entreprise</strong><br>
+        34000 Montpellier<br>
+        SIRET : 5469864684
+    </div>
+</div>
+<div class="address to">
+    <div class="address_label">Pour</div>
+    <div class="address_content">
+        <strong>{{ user.firstname }} {{ user.lastname }}</strong><br>
+    </div>
+    <div class="cb"></div>
+    <div class="address_label">Sujet</div>
+    <div class="address_content">Achat sur monsite.com</div>
+</div>
+<div class="infos">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+        <tr>
+            <td class="label">Facture n°</td>
+            <td class="def">
+                <strong>FACT-{{ order.createdAt.format('Y') }}-{{ order.id }}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Emise le</td>
+            <td class="def">{{ order.createdAt.format('d/m/Y') }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="cb"></div>
+<table class="items">
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th class="tright" width="168">Prix unitaire HT</th>
+        <th class="tright" width="80">Quantité</th>
+        <th class="tright" width="108">Montant HT</th>
+        <th class="tright" width="158">Montant TTC</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in order.rows %}
+        <tr>
+            <td>{{ row.product.name }}</td>
+            <td class="tright">{{ row.price | price_format }}</td>
+            <td class="tright">{{ row.quantity }}</td>
+            <td class="tright">{{ (row.price * row.quantity) | price_format }}</td>
+            <td class="tright">{{ vat((row.price * row.quantity), order.vat) | price_format }}</td>
+        </tr>
+        <tr class="total total-first">
+            <td class="label" colspan="4">Sous Total HT</td>
+            <td class="tright"><strong>{{ order.price | price_format }}</strong></td>
+        </tr>
+        <tr class="total total">
+            <td class="label" colspan="4">Taxe ({{ order.vat | price_format('%') }})</td>
+            <td class="tright"><strong>{{ vat_only(order.price, order.vat) | price_format }}</strong></td>
+        </tr>
+        <tr class="total total-big">
+            <td class="label" colspan="4">Total TTC</td>
+            <td class="tright"><strong>{{ vat(order.price, order.vat) | price_format }}</strong></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="footer">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at consectetur consequatur deleniti distinctio
+    dolorum, ea ipsum minima molestias nam natus non nulla numquam odit omnis perspiciatis quis quod, similique!
+</div>
+<script>
+  window.print()
+  window.close()
+</script>
+</body>
+</html>
