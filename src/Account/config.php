@@ -3,5 +3,5 @@
 use App\Account\Entity\User;
 
 return [
-	'auth.entity' => User::class
+    'auth.entity' => User::class
 ];

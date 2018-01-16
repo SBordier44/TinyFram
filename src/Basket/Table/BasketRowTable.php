@@ -7,12 +7,12 @@ use Framework\Database\Table;
 
 class BasketRowTable extends Table
 {
-	/**
-	 * @var string
-	 */
-	protected $table = 'baskets_products';
-	/**
-	 * @var string
-	 */
-	protected $entity = BasketRow::class;
+    /**
+     * @var string
+     */
+    protected $table = 'baskets_products';
+    /**
+     * @var string
+     */
+    protected $entity = BasketRow::class;
 }

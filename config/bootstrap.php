@@ -18,7 +18,9 @@ use Psr\Container\ContainerInterface;
 use function DI\{
 	factory, get, object
 };
-
+if(PHP_SAPI !== 'cli'){
+    define('WEB_PATH', realpath('.'));
+}
 return [
 	'env'                    => getenv('APP_ENV', 'dev'),
 	'debug'                  => getenv('APP_ENV', 'dev') === 'dev',

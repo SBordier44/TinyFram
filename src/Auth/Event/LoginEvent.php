@@ -7,25 +7,25 @@ use Framework\Event\Event;
 
 class LoginEvent extends Event
 {
-	/**
-	 * @var string
-	 */
-	protected $name = 'auth.login';
-	
-	/**
-	 * LoginEvent constructor.
-	 * @param User $user
-	 */
-	public function __construct(User $user)
-	{
-		$this->setTarget($user);
-	}
-	
-	/**
-	 * @return User
-	 */
-	public function getTarget(): User
-	{
-		return parent::getTarget();
-	}
+    /**
+     * @var string
+     */
+    protected $name = 'auth.login';
+    
+    /**
+     * LoginEvent constructor.
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->setTarget($user);
+    }
+    
+    /**
+     * @return User
+     */
+    public function getTarget(): User
+    {
+        return parent::getTarget();
+    }
 }
