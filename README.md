@@ -16,7 +16,7 @@ composer create-project nuboxdevcom/tinyfram TinyFram
 ```bash
 cd TinyFram
 vendor/bin/phinx migrate #Install base tables in database
-vendor/bin/phinx seed:run #Install sample datas in database
+vendor/bin/phinx seed:run #Install sample datas in database (Include admin user)
 ```
 
 #
