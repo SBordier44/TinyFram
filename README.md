@@ -1,7 +1,6 @@
 # TinyFram
 A small MVC framework for tiny projects
 
-[![Coverage Status](https://coveralls.io/repos/github/NuBOXDevCom/TinyFram/badge.svg?branch=master)](https://coveralls.io/github/NuBOXDevCom/TinyFram?branch=master)
 [![Build Status](https://travis-ci.org/NuBOXDevCom/TinyFram.svg?branch=master)](https://travis-ci.org/NuBOXDevCom/TinyFram)
 [![License](https://poser.pugx.org/nuboxdevcom/tinyfram/license?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)
 [![Total Downloads](https://poser.pugx.org/nuboxdevcom/tinyfram/downloads?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)

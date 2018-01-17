@@ -6,12 +6,17 @@ php:
 
 install:
   - composer selfupdate
-  - composer install
+  - composer install --no-interaction
   - composer run-script travis-build-env
 
-script:
-  - ./vendor/bin/phpcs -s
-  - ./vendor/bin/phpunit --colors --coverage-text --coverage-clover build/logs/clover.xml
+env:
+  - APP_ENV="dev"
 
-after_success:
-  - travis_retry php vendor/bin/coveralls
+before_script:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS framework;'
+
+script:
+  - ./vendor/bin/phinx migrate
+  - ./vendor/bin/phinx seed:run
+  - ./vendor/bin/php-cs-fixer fix . --dry-run
+  - ./vendor/bin/phpunit
