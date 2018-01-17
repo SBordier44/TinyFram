@@ -45,7 +45,6 @@ class PasswordForgetAction
         PasswordResetMailer $mailer,
         FlashService $flashService
     ) {
-        
         $this->renderer     = $renderer;
         $this->userTable    = $userTable;
         $this->mailer       = $mailer;

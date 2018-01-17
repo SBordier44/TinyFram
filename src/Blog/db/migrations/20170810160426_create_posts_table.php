@@ -4,7 +4,6 @@ use Phinx\Migration\AbstractMigration;
 
 class CreatePostsTable extends AbstractMigration
 {
-    
     public function change()
     {
         $this->table('posts')

@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class ValidationErrorTest extends TestCase
 {
-    
     public function testString()
     {
         $error    = new ValidationError('demo', 'fake', ['a1', 'a2']);

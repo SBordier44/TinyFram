@@ -12,7 +12,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class DispatcherMiddlewareTest extends TestCase
 {
-    
     public function testDispatchTheCallback()
     {
         $callback   = function () {
