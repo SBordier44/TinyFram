@@ -83,11 +83,11 @@ class ContactActionTest extends ActionTestCase
         ]);
         $this->flash->expects(self::once())->method('success');
         $this->mailer->expects(self::once())->method('send')->with(self::callback(function (Swift_Message $message) {
-                self::assertArrayHasKey($this->to, $message->getTo());
-                self::assertArrayHasKey('demo@local.dev', $message->getFrom());
-                self::assertContains('texttexttext', $message->toString());
-                self::assertContains('htmlhtmlhtml', $message->toString());
-                return true;
+            self::assertArrayHasKey($this->to, $message->getTo());
+            self::assertArrayHasKey('demo@local.dev', $message->getFrom());
+            self::assertContains('texttexttext', $message->toString());
+            self::assertContains('htmlhtmlhtml', $message->toString());
+            return true;
         }));
         $this->renderer->expects(self::any())->method('render')->willReturn('texttexttext', 'htmlhtmlhtml');
         $response = call_user_func($this->action, $request);

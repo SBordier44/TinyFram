@@ -7,7 +7,6 @@ use Tests\DatabaseTestCase;
 
 class QueryTest extends DatabaseTestCase
 {
-    
     public function testSimpleQuery()
     {
         $query = (new Query())->from('posts')->select('name');

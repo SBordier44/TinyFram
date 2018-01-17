@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 class RouterMiddlewareTest extends TestCase
 {
-    
     public function testPassParameters()
     {
         $route      = new Route('demo', 'trim', ['id' => 2]);

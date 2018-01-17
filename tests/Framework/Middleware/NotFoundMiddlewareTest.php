@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class NotFoundMiddlewareTest extends TestCase
 {
-    
     public function testSendNotFound()
     {
         $request    = new ServerRequest('GET', '/demo');

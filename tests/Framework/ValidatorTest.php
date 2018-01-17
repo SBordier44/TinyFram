@@ -8,7 +8,6 @@ use Tests\DatabaseTestCase;
 
 class ValidatorTest extends DatabaseTestCase
 {
-    
     public function testRequiredIfFail()
     {
         $errors = $this->makeValidator(['name' => 'joe'])->required('name', 'content')->getErrors();

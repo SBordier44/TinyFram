@@ -13,7 +13,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class LoggedInMiddlewareTest extends TestCase
 {
-    
     public function testThrowIfNoUser()
     {
         $request = new ServerRequest('GET', '/demo/');

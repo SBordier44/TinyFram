@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class TrailingSlashMiddlewareTest extends TestCase
 {
-    
     public function testRedirectIfSlash()
     {
         $request    = new ServerRequest('GET', '/demo/');

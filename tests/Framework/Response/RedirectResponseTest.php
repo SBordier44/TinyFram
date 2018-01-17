@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class RedirectResponseTest extends TestCase
 {
-    
     public function testStatus()
     {
         $response = new RedirectResponse('/demo');

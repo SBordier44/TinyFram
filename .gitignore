@@ -8,5 +8,5 @@ public/uploads/**
 downloads/
 *~
 .env
-
+.php_cs.cache
 build/

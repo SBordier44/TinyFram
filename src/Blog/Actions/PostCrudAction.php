@@ -51,7 +51,6 @@ class PostCrudAction extends CrudAction
         CategoryTable $categoryTable,
         PostUpload $postUpload
     ) {
-        
         parent::__construct($renderer, $router, $table, $flash);
         $this->categoryTable = $categoryTable;
         $this->postUpload    = $postUpload;

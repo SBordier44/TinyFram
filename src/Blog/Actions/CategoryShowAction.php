@@ -36,7 +36,6 @@ class CategoryShowAction
         PostTable $postTable,
         CategoryTable $categoryTable
     ) {
-        
         $this->renderer      = $renderer;
         $this->postTable     = $postTable;
         $this->categoryTable = $categoryTable;

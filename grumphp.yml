@@ -3,3 +3,8 @@ parameters:
     bin_dir: vendor/bin
     tasks:
         phplint: ~
+        phpunit: ~
+        phpcsfixer2: ~
+    ascii:
+        failed: ~
+        succeeded: ~
