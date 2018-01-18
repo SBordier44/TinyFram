@@ -2,7 +2,9 @@
 
 namespace Framework\Session;
 
-class PHPSession implements SessionInterface, \ArrayAccess
+use function array_key_exists;
+
+class PHPSession implements SessionInterface
 {
     /**
      * @param mixed $offset
@@ -10,8 +12,7 @@ class PHPSession implements SessionInterface, \ArrayAccess
      */
     public function offsetExists($offset): bool
     {
-        $this->ensureStarted();
-        return array_key_exists($offset, $_SESSION);
+        return $this->exists($offset);
     }
     
     /**
@@ -34,11 +35,11 @@ class PHPSession implements SessionInterface, \ArrayAccess
     }
     
     /**
-     * @param string $key
-     * @param mixed  $default
+     * @param mixed $key
+     * @param mixed $default
      * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         $this->ensureStarted();
         if (array_key_exists($key, $_SESSION)) {
@@ -52,17 +53,17 @@ class PHPSession implements SessionInterface, \ArrayAccess
      * @param mixed $value
      * @return mixed
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): mixed
     {
         return $this->set($offset, $value);
     }
     
     /**
-     * @param string $key
-     * @param        $value
+     * @param mixed $key
+     * @param mixed $value
      * @return mixed
      */
-    public function set(string $key, $value): void
+    public function set($key, $value): void
     {
         $this->ensureStarted();
         $_SESSION[$key] = $value;
@@ -70,18 +71,30 @@ class PHPSession implements SessionInterface, \ArrayAccess
     
     /**
      * @param mixed $offset
+     * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->delete($offset);
     }
     
     /**
-     * @param string $key
+     * @param mixed $key
+     * @return void
      */
-    public function delete(string $key): void
+    public function delete($key): void
     {
         $this->ensureStarted();
         unset($_SESSION[$key]);
+    }
+    
+    /**
+     * @param mixed $key
+     * @return bool
+     */
+    public function exists($key): bool
+    {
+        $this->ensureStarted();
+        return array_key_exists($key, $_SESSION);
     }
 }
