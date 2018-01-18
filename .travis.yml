@@ -20,3 +20,7 @@ script:
   - ./vendor/bin/phinx seed:run
   - ./vendor/bin/php-cs-fixer fix . --dry-run
   - ./vendor/bin/phpunit
+
+branches:
+  only:
+    - master
