@@ -2,25 +2,28 @@
 
 namespace Framework\Session;
 
-interface SessionInterface
+use ArrayAccess;
+
+interface SessionInterface extends ArrayAccess
 {
     
     /**
-     * @param string $key
-     * @param mixed  $default
+     * @param mixed $key
+     * @param mixed $default
      * @return mixed
      */
-    public function get(string $key, $default = null);
+    public function get($key, $default = null);
     
     /**
-     * @param string $key
-     * @param        $value
-     * @return mixed
+     * @param mixed $key
+     * @param mixed $value
+     * @return void
      */
-    public function set(string $key, $value): void;
+    public function set($key, $value): void;
     
     /**
-     * @param string $key
+     * @param mixed $key
+     * @return void
      */
-    public function delete(string $key): void;
+    public function delete($key): void;
 }
