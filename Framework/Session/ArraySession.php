@@ -10,11 +10,11 @@ class ArraySession implements SessionInterface
     private $session = [];
     
     /**
-     * @param string $key
-     * @param mixed  $default
+     * @param mixed $key
+     * @param mixed $default
      * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         if (array_key_exists($key, $this->session)) {
             return $this->session[$key];
@@ -23,20 +23,68 @@ class ArraySession implements SessionInterface
     }
     
     /**
-     * @param string $key
-     * @param        $value
+     * @param mixed $key
+     * @param mixed $value
      * @return mixed
      */
-    public function set(string $key, $value): void
+    public function set($key, $value): void
     {
         $this->session[$key] = $value;
     }
     
     /**
-     * @param string $key
+     * @param mixed $key
      */
-    public function delete(string $key): void
+    public function delete($key): void
     {
-        unset($this->session[$key]);
+        if (array_key_exists($key, $this->session)) {
+            unset($this->session[$key]);
+        }
+    }
+    
+    /**
+     * @param mixed $key
+     * @return bool
+     */
+    public function exists($key): bool
+    {
+        return array_key_exists($key, $this->session);
+    }
+    
+    /**
+     * @param mixed $offset
+     * @return boolean
+     */
+    public function offsetExists($offset): bool
+    {
+        return $this->exists($offset);
+    }
+    
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+    
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     * @return mixed
+     */
+    public function offsetSet($offset, $value)
+    {
+        return $this->set($offset, $value);
+    }
+    
+    /**
+     * @param mixed $offset
+     * @return void
+     */
+    public function offsetUnset($offset): void
+    {
+        $this->delete($offset);
     }
 }
