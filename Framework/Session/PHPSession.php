@@ -53,7 +53,7 @@ class PHPSession implements SessionInterface
      * @param mixed $value
      * @return mixed
      */
-    public function offsetSet($offset, $value): mixed
+    public function offsetSet($offset, $value)
     {
         return $this->set($offset, $value);
     }
