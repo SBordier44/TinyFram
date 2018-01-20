@@ -1,11 +1,11 @@
 # TinyFram
 A small MVC framework for tiny projects
 
-[![Build Status](https://travis-ci.org/NuBOXDevCom/TinyFram.svg?branch=master)](https://travis-ci.org/NuBOXDevCom/TinyFram)
-[![License](https://poser.pugx.org/nuboxdevcom/tinyfram/license?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)
-[![Total Downloads](https://poser.pugx.org/nuboxdevcom/tinyfram/downloads?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)
-[![Latest Stable Version](https://poser.pugx.org/nuboxdevcom/tinyfram/v/stable?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)
-[![Latest Unstable Version](https://poser.pugx.org/nuboxdevcom/tinyfram/v/unstable?format=plastic)](https://packagist.org/packages/nuboxdevcom/tinyfram)
+[![Travis Build Status](https://img.shields.io/travis/NuBOXDevCom/TinyFram/master.svg?style=flat-square)](https://travis-ci.org/NuBOXDevCom/TinyFram)
+[![license](https://img.shields.io/github/license/NuBOXDevCom/TinyFram.svg?style=flat-square)](https://github.com/NuBOXDevCom/TinyFram/blob/master/LICENSE.md)
+[![Packagist stable version](https://img.shields.io/packagist/v/nuboxdevcom/tinyfram.svg?style=flat-square)](https://packagist.org/packages/nuboxdevcom/tinyfram)
+[![GitHub issues](https://img.shields.io/github/issues/nuboxdevcom/tinyfram.svg?style=flat-square)](https://github.com/NuBOXDevCom/TinyFram/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/nuboxdevcom/tinyfram.svg?style=flat-square)](https://github.com/NuBOXDevCom/TinyFram/pulls)
 
 #
 ### Prerequisites
@@ -28,7 +28,7 @@ vendor/bin/phinx seed:run #Install sample datas in database (Include admin user)
 #
 ### Launch
 ```bash
-php -S localhost:8000 -t public/ -ddisplay_errors=1
+php -S localhost:8000 -t public/
 ```
 Go to in your favorite browser:
 > [http://localhost:8000](http://localhost:8000)
