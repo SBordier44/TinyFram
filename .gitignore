@@ -1,12 +1,3 @@
-.idea/
-vendor/
-composer.lock
-tmp/
 public/uploads/**
 !public/uploads/products/fake.jpg
 !public/uploads/products/fake_thumb.jpg
-downloads/
-*~
-.env
-.php_cs.cache
-build/

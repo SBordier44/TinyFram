@@ -4,11 +4,11 @@ namespace Framework\Middleware;
 
 use Framework\Router\Route;
 use Psr\Container\ContainerInterface;
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function is_array;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class DispatcherMiddleware implements MiddlewareInterface
 {

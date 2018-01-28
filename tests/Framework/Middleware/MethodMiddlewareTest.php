@@ -4,8 +4,8 @@ namespace Tests\Framework\Middleware;
 
 use Framework\Middleware\MethodMiddleware;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class MethodMiddlewareTest extends TestCase
 {

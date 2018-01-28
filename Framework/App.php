@@ -8,12 +8,12 @@ use Doctrine\Common\Cache\FilesystemCache;
 use Framework\Middleware\CombinedMiddleware;
 use Framework\Middleware\RoutePrefixedMiddleware;
 
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use LogicException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
 class App implements RequestHandlerInterface
