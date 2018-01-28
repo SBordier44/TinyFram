@@ -8,10 +8,10 @@ use Framework\Exception\ForbiddenException;
 use Framework\Response\RedirectResponse;
 use Framework\Session\FlashService;
 use Framework\Session\SessionInterface;
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use TypeError;
 
 class ForbiddenMiddleware implements MiddlewareInterface

@@ -3,10 +3,10 @@
 namespace Framework\Middleware;
 
 use Framework\Renderer\RendererInterface;
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use function sprintf;
 
 class RendererRequestMiddleware implements MiddlewareInterface

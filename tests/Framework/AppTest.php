@@ -4,10 +4,10 @@ namespace Tests\Framework;
 
 use Framework\App;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\MiddlewareInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 
 class AppTest extends TestCase
 {
