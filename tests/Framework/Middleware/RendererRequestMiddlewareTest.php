@@ -6,11 +6,11 @@ use Framework\Middleware\RendererRequestMiddleware;
 use Framework\Renderer\RendererInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class RendererRequestMiddlewareTest extends TestCase
 {

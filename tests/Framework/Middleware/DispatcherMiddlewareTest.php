@@ -5,10 +5,10 @@ namespace Tests\Framework\Middleware;
 use Framework\Middleware\DispatcherMiddleware;
 use Framework\Router\Route;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class DispatcherMiddlewareTest extends TestCase
 {

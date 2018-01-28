@@ -7,9 +7,9 @@ use Framework\Auth\UserInterface;
 use Framework\Exception\ForbiddenException;
 use Framework\Middleware\LoggedInMiddleware;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class LoggedInMiddlewareTest extends TestCase
 {

@@ -8,10 +8,10 @@ use Framework\Exception\ForbiddenException;
 use Framework\Middleware\RoleMiddleware;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ServerRequest;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class RoleMiddlewareTest extends TestCase
 {

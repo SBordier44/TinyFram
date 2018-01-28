@@ -4,13 +4,13 @@ namespace Framework\Middleware;
 
 use Exception;
 use GuzzleHttp\Psr7\Response;
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function is_callable;
 use function is_string;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class CombinedMiddlewareDelegate implements RequestHandlerInterface
 {
